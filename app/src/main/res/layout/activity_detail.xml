@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.udacity.sandwichclub.DetailActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:id="@+id/collapsing_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
     <ImageView
         android:id="@+id/image_iv"
@@ -11,49 +25,106 @@
         android:layout_height="200dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/sandwich_picture_content_description"
+        app:layout_collapseMode="parallax"
         android:scaleType="centerCrop" />
 
-    <TextView
-        android:id="@+id/origin_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    </android.support.design.widget.CollapsingToolbarLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail_also_known_as_label"
-        android:textStyle="bold" />
+    </android.support.design.widget.AppBarLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail_ingredients_label"
-        android:textStyle="bold" />
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail_place_of_origin_label"
-        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/description_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+             <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp">
 
-    <TextView
-        android:id="@+id/ingredients_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/also_known"
+                    style="@style/linear_layout">
 
-    <TextView
-        android:id="@+id/also_known_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/also_known_lbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/padding_left"
+                        android:text="@string/detail_also_known_as_label"
+                        android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail_description_label"
-        android:textStyle="bold" />
-</FrameLayout>
+                    <TextView
+                        android:id="@+id/also_known_tv"
+                        style="@style/text_view"
+                        android:layout_width="wrap_content"
+                        android:text="also know" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ingredients"
+                    style="@style/linear_layout"
+                    android:layout_below="@id/also_known">
+
+                    <TextView
+                        android:id="@+id/ingredients_lbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detail_ingredients_label"
+                        android:paddingLeft="@dimen/padding_left"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/ingredients_tv"
+                        style="@style/text_view"
+                        android:text="ingredients" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/origin"
+                    style="@style/linear_layout"
+                    android:layout_below="@+id/ingredients">
+
+                    <TextView
+                        android:id="@+id/origin_lbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detail_place_of_origin_label"
+                        android:paddingLeft="@dimen/padding_left"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/origin_tv"
+                        style="@style/text_view"
+                        android:text="origin" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/linear_layout"
+                    android:layout_below="@+id/origin">
+
+                    <TextView
+                        android:id="@+id/description_lbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detail_description_label"
+                        android:paddingLeft="@dimen/padding_left"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/description_tv"
+                        style="@style/text_view"
+                        android:text="desctiption" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
